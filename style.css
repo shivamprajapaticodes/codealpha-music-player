@@ -1,0 +1,253 @@
+/* ==== RESET AND BASE STYLES ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #000;
+  overflow: hidden;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+
+/* ==== BACKGROUND VIDEO ==== */
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+  filter: blur(20px) brightness(0.5);
+}
+
+/* ==== MUSIC PLAYER CARD ==== */
+.player-card {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #00ff88;
+  padding: 2rem;
+  border-radius: 2rem;
+  width: 360px;
+  max-width: 95%;
+  box-shadow: 0 0 25px #00ff88;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  position: relative;
+}
+
+/* ==== THEME TOGGLE BUTTON ==== */
+.theme-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #00ff88;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* ==== COVER IMAGE ==== */
+.cover-container {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px solid #00ff88;
+  overflow: hidden;
+  animation: rotate 15s linear infinite;
+}
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==== TITLES ==== */
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+.artist {
+  font-size: 1rem;
+  color: #ccc;
+  text-align: center;
+}
+
+/* ==== CONTROLS ==== */
+.controls,
+.extra-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.controls button,
+.extra-controls button,
+.buttons button {
+  background: transparent;
+  border: none;
+  color: #00ff88;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+.controls button:hover,
+.extra-controls button:hover,
+.buttons button:hover {
+  transform: scale(1.2);
+  color: #66ffc2;
+}
+
+/* ==== PROGRESS BAR ==== */
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+#progress {
+  flex: 1;
+  appearance: none;
+  height: 5px;
+  border-radius: 5px;
+  background: #00ff88;
+  outline: none;
+}
+#progress::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #00ff88;
+  cursor: pointer;
+}
+
+/* ==== VOLUME ==== */
+.volume-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+#volume {
+  flex: 1;
+  appearance: none;
+  height: 5px;
+  border-radius: 5px;
+  background: #00ff88;
+}
+#volume::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #00ff88;
+  cursor: pointer;
+}
+
+/* ==== BUTTONS ==== */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.buttons button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #00ff88;
+  color: #000;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.2s;
+}
+.buttons button:hover {
+  background: #66ffc2;
+  transform: translateY(-2px);
+}
+
+/* ==== MODALS ==== */
+.lyrics-modal,
+.playlist-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.modal-content {
+  background: #111;
+  color: #00ff88;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  border-radius: 1rem;
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 2px solid #00ff88;
+}
+.modal-content pre {
+  white-space: pre-wrap;
+}
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+}
+.modal-content li {
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.modal-content li:hover {
+  background: rgba(0, 255, 136, 0.1);
+}
+.close {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* ==== VISUALIZER ==== */
+#visualizer {
+  width: 100%;
+  height: 60px;
+  background: transparent;
+  margin-top: 0.5rem;
+}
+
+/* ==== ROTATION ==== */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
